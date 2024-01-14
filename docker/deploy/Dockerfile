@@ -1,8 +1,11 @@
 FROM python:3.8 as builder
 
+COPY . .
 RUN apt-get update \
   && apt-get install -y ca-certificates \
   && apt-get clean
+
+RUN ls
 
 RUN pip install pyinstaller --no-cache
 RUN pip install staticx --no-cache
