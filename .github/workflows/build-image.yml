@@ -31,7 +31,6 @@ jobs:
           pyinstaller main.spec
           staticx ./dist/main/main ./app
           ls
-          ls ./app
       - name: Push to GitHub Packages
         id: "build-push-docker"
         uses: docker/build-push-action@v2
