@@ -6,6 +6,7 @@ RUN apt-get update \
 
 RUN pip install pyinstaller --no-cache
 RUN pip install staticx --no-cache
+RUN pip install binutils
 RUN pyinstaller main.spec
 RUN staticx ./dist/main/main ./app
 
