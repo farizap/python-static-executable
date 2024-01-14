@@ -1,7 +1,13 @@
-FROM alpine:3.18.5 as alpine
+FROM python:3.8-slim as alpine
 
-RUN apk add -U --no-cache ca-certificates
-RUN ls
+RUN apt-get update \
+  && apt-get install -y ca-certificates \
+  && apt-get clean
+
+RUN pip install pyinstaller --no-cache
+RUN pip install staticx --no-cache
+RUN pyinstaller main.spec
+RUN staticx ./dist/main/main ./app
 
 FROM scratch
 COPY --from=alpine /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
