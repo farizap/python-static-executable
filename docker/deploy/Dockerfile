@@ -15,7 +15,7 @@ RUN ls -l dist
 FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
-USER 65535
-COPY --from=builder --chown=65535:65535 /app/dist/main /app
+# USER 65535
+COPY --from=builder /app/dist/main /app
 
 ENTRYPOINT ["/app"]
