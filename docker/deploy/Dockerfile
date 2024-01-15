@@ -18,5 +18,5 @@ COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 ENTRYPOINT ["/app"]
 USER 65535
-COPY --from=builder --chown=65535:65535 tmp /tmp
+COPY --from=builder --chown=65535:65535 /tmp /tmp
 COPY --from=builder --chown=65535:65535 /app/app /
