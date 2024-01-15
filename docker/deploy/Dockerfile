@@ -10,14 +10,10 @@ RUN pip install pyinstaller --no-cache
 RUN pip install staticx --no-cache
 RUN pip install patchelf==0.17.0 --no-cache
 RUN pyinstaller main.spec
-RUN ls
-RUN ls ./dist
-RUN staticx ./dist/main ./app
 
 FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 ENTRYPOINT ["/app"]
 USER 65535
-COPY --from=builder --chown=65535:65535 /tmp /tmp
-COPY --from=builder --chown=65535:65535 /app/app /
+COPY --from=builder --chown=65535:65535 /app/dist/main /app
