@@ -8,6 +8,7 @@ a = Analysis(
     datas=[],
     hiddenimports=[
         'app',
+        'uvicorn'
         'uvicorn.logging',
         'uvicorn.loops',
         'uvicorn.loops.auto',
