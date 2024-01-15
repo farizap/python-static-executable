@@ -10,8 +10,9 @@ RUN pip install pyinstaller --no-cache
 RUN pip install staticx --no-cache
 RUN pip install patchelf==0.17.0 --no-cache
 RUN pyinstaller main.spec
-RUN staticx ./dist/main/main ./app
 RUN ls
+RUN ls ./dist
+RUN staticx ./dist/main/main ./app
 
 FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
