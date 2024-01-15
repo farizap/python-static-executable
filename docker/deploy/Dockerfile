@@ -12,10 +12,11 @@ RUN pip install patchelf==0.17.0 --no-cache
 RUN pyinstaller main.spec
 RUN ls
 
-FROM scratch
+FROM alpine
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 USER 65535
 COPY --from=builder --chown=65535:65535 /app/dist/main /app
 
-ENTRYPOINT ["./app"]
+RUN ls
+ENTRYPOINT ["/app"]
