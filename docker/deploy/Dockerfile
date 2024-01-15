@@ -1,4 +1,4 @@
-FROM python:3.8 as builder
+FROM python:3.8 AS builder
 
 WORKDIR /app
 COPY . .
@@ -14,6 +14,7 @@ RUN pyinstaller main.spec
 FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
-ENTRYPOINT ["/app"]
 USER 65535
 COPY --from=builder --chown=65535:65535 /app/dist/main /app
+
+ENTRYPOINT ["/app"]
