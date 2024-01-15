@@ -16,7 +16,6 @@ FROM alpine
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 USER 65535
-COPY --from=builder --chown=65535:65535 /app/dist/main /app
+COPY --from=builder --chown=65535:65535 /app/dist/main /main
 
-RUN ls
-ENTRYPOINT ["/app"]
+ENTRYPOINT ["/main"]
