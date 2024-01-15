@@ -12,7 +12,7 @@ RUN pip install patchelf==0.17.0 --no-cache
 RUN pyinstaller main.spec
 RUN ls
 
-FROM alpine
+FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 USER 65535
