@@ -10,7 +10,7 @@ RUN ls
 
 RUN pip install pyinstaller --no-cache
 RUN pip install staticx --no-cache
-RUN pip install patchelf --no-cache
+RUN pip install patchelf==0.17.0 --no-cache
 RUN pyinstaller main.spec
 RUN staticx ./dist/main/main ./app
 
