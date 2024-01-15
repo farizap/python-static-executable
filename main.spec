@@ -7,7 +7,6 @@ a = Analysis(
     binaries=[],
     datas=[],
     hiddenimports=[
-        'uvicorn',
         'app',
     ],
     hookspath=[],
