@@ -10,7 +10,7 @@ RUN pip install pyinstaller staticx patchelf==0.17.0 --no-cache
 
 RUN pyinstaller main.spec 
 RUN ls 
-RUN dist 
+RUN ls dist 
 RUN staticx ./dist/main /app
 
 FROM scratch
