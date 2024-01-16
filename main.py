@@ -1,8 +1,11 @@
 import uvicorn
-import multiprocessing
-# from  import Process, freeze_support
+from fastapi import FastAPI
+app = FastAPI()
 
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
 if __name__ == "__main__":
-    mutiprocessing.freeze_support()
     uvicorn.run("app:app", host="0.0.0.0", port=8080, reload=False)
