@@ -7,6 +7,7 @@ RUN apt-get update \
   && apt-get clean
 
 RUN pip install pyinstaller staticx patchelf==0.17.0 --no-cache 
+RUN pip install -r requirements.txt --no-cache 
 
 RUN pyinstaller main.spec 
 RUN ls 
